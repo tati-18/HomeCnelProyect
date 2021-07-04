@@ -21,11 +21,8 @@ riobamba: .double 0.1068   #18
 bolivar: .double 0.0997    #19
 imaburaCar: .double 0.1047 #20
 enunciado: .asciiz "Los codigos de los sectores son:\n"
-enunciado1: .asciiz "  (1)Esmeralda - (2)El Oro - (3)Manabi - (4)Santa Elena - (5)Guayas - (6)Guayaquil - (7)Los Rios\n"
-enunciado1.1: .asciiz "   (8)Milagro - (7)Los Rios - (9)Galapagos - (10)Zamora - (11)Sucumbios - (12)Morona Santiago\n"
-enunciado1.2: .asciiz "   (13)Santo Domingo - (14)Azogues- (15)Cotopaxi - (16)Ambato - (17)Quito - (18)Riobamba - (19)Bolivar - (20)Imabura-Carchi\n"
-enunciado2: .asciiz "El nombre de su sector lo encontrara en su planilla electrica\n"
-enunciado3: .asciiz "Ingrese el numero correspondiente a su sector: "
+enunciado1: .asciiz "  (1)Esmeralda - (2)El Oro - (3)Manabi - (4)Santa Elena - (5)Guayas - (6)Guayaquil - (7)Los Rios\n  (8)Milagro - (7)Los Rios - (9)Galapagos - (10)Zamora - (11)Sucumbios - (12)Morona Santiago\n  (13)Santo Domingo - (14)Azogues- (15)Cotopaxi - (16)Ambato - (17)Quito - (18)Riobamba - (19)Bolivar - (20)Imabura-Carchi\n"
+enunciado2: .asciiz "El nombre de su sector lo encontrara en su planilla electrica\n Ingrese el numero correspondiente a su sector: "
 enunciadoError: .asciiz "--------------Codigo incorrecto-----------\n"
 texto: .space len
 .text
@@ -39,19 +36,14 @@ sector:
       syscall
       la $a0,enunciado1
       syscall 
-      la $a0,enunciado1.1
-      syscall
-      la $a0,enunciado1.2
-      syscall
       la $a0,enunciado2
       syscall
-      la $a0,enunciado3
-      syscall
+
       li $v0,5
       la $a0,texto
       li $a1,len
       syscall
-      move $s0,$v0 
+      move $s0,$v0   
       addi $t0,$zero,1
       beq $s0,$t0,recEsmeraldas
       addi $t0,$zero,2
@@ -92,6 +84,7 @@ sector:
       beq $s0,$t0, recBolivar
       addi $t0,$zero,20
       beq $s0,$t0, recImbaburaCa
+      
       
       li $v0,4
       la $a0,enunciadoError

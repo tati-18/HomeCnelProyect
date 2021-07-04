@@ -12,7 +12,7 @@ tarifaDig:
     addi $t0,$zero,12
     ble $s0,$t0,tarifaCosta
     addi $t0, $zero 110     #este valor es de la sierra
-    ble  $s2, $t0, descuento
+    ble  $t2, $t0, descuento
     li $v0,4
     la $a0,enunciado2
     syscall
@@ -22,7 +22,7 @@ tarifaDig:
 
 tarifaCosta: 
    addi $t0, $zero, 130  #valor costa 
-   ble   $s2, $t0, descuento
+   ble   $t2, $t0, descuento
    li $v0,4
    la $a0,enunciado2
    syscall
